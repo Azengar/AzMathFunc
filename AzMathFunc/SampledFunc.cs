@@ -57,16 +57,16 @@ namespace AzMathFunc
         /// <returns>The cumulative sampled function</returns>
         public SampledFunc GetCumulative()
         {
-            SortedList<int, float> cumulativeProbs = new SortedList<int, float>();
+            SortedList<int, float> samples = new SortedList<int, float>();
 
-            float cumul = 0f;
+            float currentValue = 0f;
             foreach (var pair in m_Samples)
             {
-                cumul += pair.Value;
-                cumulativeProbs.Add(pair.Key, cumul);
+                currentValue += pair.Value;
+                samples.Add(pair.Key, currentValue);
             }
 
-            return new SampledFunc(cumulativeProbs);
+            return new SampledFunc(samples);
         }
 
         /// <summary>
@@ -75,14 +75,14 @@ namespace AzMathFunc
         /// <returns>The inversion function</returns>
         public SampledFunc GetInverse()
         {
-            SortedList<int, float> inverseProbs = new SortedList<int, float>();
+            SortedList<int, float> samples = new SortedList<int, float>();
 
             foreach (var pair in m_Samples)
             {
-                inverseProbs.Add(pair.Key, (float)pair.Key / m_MaxKey);
+                samples.Add(pair.Key, (float)pair.Key / m_MaxKey);
             }
 
-            return new SampledFunc(inverseProbs);
+            return new SampledFunc(samples);
         }
 
         /// <summary>
