@@ -1,2 +1,2 @@
 # AzMathFunc
-A very simple and straightforward solution to store and use sampled functions in .NET core
+A very simple and straightforward solution to store and use sampled functions in .NET core 3.0
